@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -32,14 +34,30 @@ public class UserController {
         LOGGER.info("Inside find all users in user controller");
         return ResponseEntity.ok().body(userService.findAllUsers());
     }
-    @GetMapping("/verifyRegistrations")
+    /*@GetMapping("/verifyRegistrations")
     public String verifyRegistration(@RequestParam("token") String token){
         String result=userService.verifyVerification(token);
         if (result.equalsIgnoreCase("valid")){
-            return "User Verified Successfully";
+           // return "User Verified Successfully";
+            return "redirect:categories";
         }
         return "Bad User";
+    }*/
+
+        @GetMapping("/verifyRegistrations")
+        public ModelAndView verifyReg(@RequestParam("token") String token, ModelMap model) {
+            String result = userService.verifyVerification(token);
+            if (result.equalsIgnoreCase("valid")) {
+                // return "User Verified Successfully";
+
+            model.addAttribute("attribute", "redirect");
+            return new ModelAndView("redirect:http://localhost:8080/api/users", model);
+        }
+            return new ModelAndView();
     }
+
+
+
 
     @PostMapping("/saveuser")
     public ResponseEntity<User> saveUser(@RequestBody Model user, final HttpServletRequest request) {
