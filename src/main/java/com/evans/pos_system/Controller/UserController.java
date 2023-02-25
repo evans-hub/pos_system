@@ -51,7 +51,7 @@ public class UserController {
                 // return "User Verified Successfully";
 
             model.addAttribute("attribute", "redirect");
-            return new ModelAndView("redirect:http://localhost:8080/api/users", model);
+            return new ModelAndView("redirect:https://possystem-production.up.railway.app/api/users", model);
         }
             return new ModelAndView();
     }
