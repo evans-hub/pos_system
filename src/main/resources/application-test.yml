@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:tc:mysql:14-alpine:///spring-blog
+    url: jdbc:tc:mysql:14-alpine:///spring-blogg
   sql:
     init:
       mode: always
