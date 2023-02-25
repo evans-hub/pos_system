@@ -10,19 +10,24 @@ import java.util.ArrayList;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Table(uniqueConstraints={@UniqueConstraint(columnNames ={"username","email","phoneNumber"})})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Column(nullable = false)
     private String username;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String phoneNumber;
+    @Column(nullable = false)
     private String password;
     private ArrayList<Role> roles=new ArrayList<Role>();
     private boolean status=false;
+    @OneToOne(mappedBy = "user")
+    private VerificationToken verificationToken;
+
 
 }

@@ -1,9 +1,9 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
   datasource:
-    url: jdbc:mysql://localhost:3306/posDb
+    url: jdbc:mysql://localhost:3306/pos
     username: root
     password:
 
@@ -12,4 +12,16 @@ spring:
   sql:
     init:
       mode: always
+
+
+#
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    username: wearealivebbss@gmail.com
+#    password: zulksppjqygidbbt
+#    protocol: smtp
+#    auth: true
+#    starttls.enable: true
+
 

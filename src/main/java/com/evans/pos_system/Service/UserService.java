@@ -1,6 +1,7 @@
 package com.evans.pos_system.Service;
 
 
+import com.evans.pos_system.DTO.CustomerDto;
 import com.evans.pos_system.Entity.Model;
 import com.evans.pos_system.Entity.Role;
 import com.evans.pos_system.Entity.User;
@@ -11,7 +12,7 @@ import java.util.List;
 
 
 public interface UserService {
-    List<User> findAllUsers();
+    List<CustomerDto> findAllUsers();
 
     User saveUser(Model user);
 
@@ -24,5 +25,7 @@ public interface UserService {
     void AddRoleToUser(String email,String rolename);
 
     Role saveRole(Role role);
+    void saveVerificationToken(User user,String token);
 
+    String verifyVerification(String token);
 }
