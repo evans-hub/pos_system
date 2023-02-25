@@ -38,7 +38,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.findAllUsers());
     }
     @GetMapping("/verifyRegistrations")
-    public String verifyRegistration(@RequestParam("token") String token){
+    public String verifyRegistrationn(@RequestParam("token") String token){
         String result=userService.verifyVerification(token);
         if (result.equalsIgnoreCase("valid")){
             return "User Verified Successfully";
